@@ -20,7 +20,6 @@ void *Eratosthenes_Thread(void *vargp){
     double *up = (double *) vargp;
     int l= *up;
     l=floor(sqrt(*up));
-    printf("Check:\n%d\n\n", l);
     for (int i = 2; i<=l; i++){
         if (check_primality(i)){
             for (int j=2; j<ceil(*up/i); j++){
