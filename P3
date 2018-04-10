@@ -1,0 +1,9 @@
+Problem #3: Prove that the algorithm satisfies all three requirements for the critical-section problem.
+
+Solution: For the critical section problem to be successfully solved, the following criteria must be met: 1) Mutual exclusion: When a thread is executing in its critical section, no other threads can be executing in their critical sections. 2) Progress: If no thread is executing in its critical section, and if there are some threads that wish to enter their critical sections, then one of these threads must enter their critical section. 3) Bounded waiting: After a thread makes a request to enter its critical section, there is a restriction or bound on the number of items that other threads are allowed to enter their critical sections before the request is granted. This algorithm in particular satisfied the three conditions mentioned above:
+
+Mutual Exclusion: This algorithm ensures mutual exclusion by flagging and turning different variables. When both processes set their flag parameters to true, only one of them will be successful and thus only one of them will go into their critical section while the other waits. 
+
+Progress: Progress is ensured through flagging and turning different variables. This is similar to the mutual exclusion criteria where only one process will be able to enter its critical section. 
+
+Bounded waiting: This is achieved through the turning of variables. If two distinct processes wish to enter a critical section, then they will both set their flags to true. Bounded waiting is prevalent here because only the thread that is next can proceed and thus the other one would have to wait. 
