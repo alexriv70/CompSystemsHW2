@@ -1,0 +1,8 @@
+Problem #4:
+a) Explain why spinlocks are not appropriate for single-processor systems yet are often used in multiprocessor systems.
+
+Solution: Spinlocks are not the best choice for single processor systems. A spinlock is a lock which causes a thread trying to acquire it to simply wait in a loop ("spin") while repeatedly checking if the lock is available. Since the thread remains active but is not performing a useful task, the use of such a lock is a kind of busy waiting. The condition that stops this waiting loop is the simple execution of another process. In a multiprocessor system, you have a myriad of processes running concurrently on the processor. 
+
+b) Explain why implementing synchronization primitives by disabling interrupts is not appropriate for a multi-processor system but can be more appropriate in a single processor system. What other requirements can we impose on a multi-core system to make this approach work? What are the disadvantages, if any, of your strategy?
+
+Solution: The implementation of interrupts in a multiprocessor system is not advantageous mainly because it prevents other processes from executing on the processor. An example of this would be a user program disabling a system interrupt such as the timer interrupt. Something like this can be quite catastrophic.  
