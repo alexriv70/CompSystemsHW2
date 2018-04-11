@@ -1,0 +1,10 @@
+Problem #8
+a) You are requested to implement synchronization schemes in the dotted spaces, such that the working mode that was described above is ensured. You may use: signal() and wait() calls to properly initialized semaphores and any shared variables among the required threads/ processes. Please justify if there is any possibility of starvation in the solution you provided.
+
+Solution: The working_window() method could be considered the process’ critical condition. The only time that starvation may occur is if there are multiple processes trying to enter break_time() at the same time or if the process cannot, for some reason execute working_window() correctly. 
+
+b) The office space described above acquires exactly N employees seating/working space. Please modify the synchronization scheme you built for i) so that at most N employees can exist at the office space at the same time, hence at most N threads execute function working_window() at the same time. 
+
+Solution: This could be achieved by having the employee() processes and cleaner() processes enter their respective working_window() and break_time() critical sections in a coordinated manner via a queue. For example, at the start, all cleaner() processes will enter the working_window() one by one, using the wait() and signal() methods to signal the next process. When all of the cleaner() processes are done, the employee() processes will begin to enter their critical sections, working_window(), in a queue, will all of the processes that are not being utilized would go inside of the break_time(). Both groups would repeat back and forth indefinitely. This is not as efficient as having them all accomplish some task simultaneously. 
+
+c) Assume that more cleaning personnel is hired, who can all work together at the same time in the office space, as long as no employees are present. Modify the synchronization scheme you developed for ii) so that at the office space there can be either: at most N employees or at most M members of the cleaning personnel.
